@@ -1,0 +1,28 @@
+from selenium import webdriver
+import time
+
+browser = webdriver.Chrome()
+browser.maximize_window()
+browser.get("https://github.com/")
+element = browser.find_element_by_css_selector('body > div.position-relative.js-header-wrapper > header > div > div.HeaderMenu.HeaderMenu--logged-out.position-fixed.top-0.right-0.bottom-0.height-fit.position-lg-relative.d-lg-flex.flex-justify-between.flex-items-center.flex-auto > div.d-lg-flex.flex-items-center.px-3.px-lg-0.text-center.text-lg-left > a.HeaderMenu-link.no-underline.mr-3')
+element.click()
+element = browser.find_element_by_id('login_field')
+element.send_keys('username')
+element = browser.find_element_by_id('password')
+element.send_keys('password')
+element = browser.find_element_by_css_selector('#login > form > div.auth-form-body.mt-3 > input.btn.btn-primary.btn-block')
+element.click()
+element = browser.find_element_by_css_selector('body > div.position-relative.js-header-wrapper > header > div:nth-child(6) > details > summary > svg > path')
+element.click()
+element = browser.find_element_by_css_selector('body > div.position-relative.js-header-wrapper > header > div:nth-child(6) > details > details-menu > a:nth-child(3)')
+element.click()
+element = browser.find_element_by_name('gist[description]')
+element.send_keys('Test Shopee')
+element = browser.find_element_by_xpath('//*[@id="gists"]/div[2]/div/div[1]/div[1]/input[2]')
+element.send_keys('Notes Shopee')
+element = browser.find_element_by_xpath('//*[@id="gists"]/div[2]/div/div[2]/div/div[5]/div[1]/div/div/div/div[5]/div/pre')
+element.send_keys("test")
+element = browser.find_element_by_css_selector('#new_gist > div > div.form-actions > button:nth-child(1)')
+element.click()
+assert 'Test Shopee' == browser.title
+browser.quit()
